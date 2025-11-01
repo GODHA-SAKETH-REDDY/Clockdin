@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import API_URL from '../config';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ const Register = () => {
           }
         }
         const body = JSON.stringify(newUser);
-        const res = await axios.post('http://localhost:5000/users/register', body, config);
+  const res = await axios.post(`${API_URL}/api/users/register`, body, config);
         console.log(res.data);
       } catch (err) {
         console.error(err.response.data);
@@ -41,7 +42,7 @@ const Register = () => {
   };
 
   const handleGoogleRegister = () => {
-    window.location.href = `http://localhost:5000/auth/google`;
+    window.location.href = `${API_URL}/api/auth/google`;
   };
 
   return (

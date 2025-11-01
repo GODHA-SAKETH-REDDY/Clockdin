@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import API_URL from '../config';
 
 const AddEvent = ({ onEventAdded }) => {
   const [form, setForm] = useState({
@@ -17,7 +18,7 @@ const AddEvent = ({ onEventAdded }) => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/events/add', form);
+      await axios.post(`${API_URL}/api/events/add`, form);
       setForm({ title: '', description: '', organizerName: '', location: '', date: '' });
       if (onEventAdded) onEventAdded();
     } catch (err) {
